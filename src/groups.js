@@ -1,7 +1,12 @@
 import React, { Component } from "react";
-import { Row, Col, Card, Tabs, Tab, Button, Divider } from "react-bootstrap";
+import { Row, Col, Card, Tabs, Tab, Button } from "react-bootstrap";
 
 class Groups extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {selectedCard: 0};
+  }
+  
   render() {
     return (
       <div style={{ margin: "10px" }}>
@@ -41,7 +46,8 @@ class Groups extends Component {
             </Row>
             {[0, 1, 2, 3].map((item) => {
               return (
-                <Card className="mb-3" key={item}>
+                <Card className="mb-3" key={item} style={{backgroundColor:item===this.state.selectedCard?'#DFEEFA':'#FFF'}}
+                onClick={()=>this.setState({selectedCard:item})}>
                   <Card.Body>
                     {/* <div className="simple-card-title"> */}
                     <h3 className="text-capitalize mb-1">TEST</h3>
